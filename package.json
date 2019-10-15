@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "eslint": "eslint .",
-    "test": "mocha test/index.js"
+    "test": "mocha test/index.js",
+    "test-cov": "nyc npm run test"
   },
   "dependencies": {
     "fs-extra": "^8.1.0"
@@ -17,6 +18,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-mocha": "^6.2.0",
     "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
     "pretty-format": "^24.9.0"
   },
   "repository": {

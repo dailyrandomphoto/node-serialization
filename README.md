@@ -1,4 +1,13 @@
 # node-serialization
+
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-url]
+[![LICENSE][license-image]][license-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![dependencies Status][dependencies-image]][dependencies-url]
+[![devDependencies Status][devDependencies-image]][devDependencies-url]
+
 A serialization library for node. Serialize/Deserialize a huge object to/from a file.
 
 Using v8 Serialization API as default.
@@ -67,3 +76,21 @@ const {
 convert('cache.data', deserializeV8, 'cache.data.json', serializeJson)
   .catch((err) => console.error(err));
 ```
+
+## License
+Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-url].
+
+[npm-url]: https://www.npmjs.com/package/node-serialization
+[travis-url]: https://travis-ci.org/dailyrandomphoto/node-serialization
+[coveralls-url]: https://coveralls.io/github/dailyrandomphoto/node-serialization?branch=master
+[license-url]: LICENSE
+[dependencies-url]: https://david-dm.org/dailyrandomphoto/node-serialization
+[devDependencies-url]: https://david-dm.org/dailyrandomphoto/node-serialization?type=dev
+
+[npm-downloads-image]: https://img.shields.io/npm/dm/node-serialization.svg
+[npm-version-image]: https://img.shields.io/npm/v/node-serialization.svg
+[license-image]: https://img.shields.io/npm/l/node-serialization.svg
+[travis-image]: https://img.shields.io/travis/dailyrandomphoto/node-serialization/master
+[coveralls-image]: https://coveralls.io/repos/github/dailyrandomphoto/node-serialization/badge.svg?branch=master
+[dependencies-image]: https://david-dm.org/dailyrandomphoto/node-serialization/status.svg
+[devDependencies-image]: https://david-dm.org/dailyrandomphoto/node-serialization/dev-status.svg
