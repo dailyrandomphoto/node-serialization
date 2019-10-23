@@ -97,6 +97,9 @@ convert('cache.data', deserializeV8, 'cache.data.json', serializeJson)
 - serializeJson
 - deserializeJson
 
+If `file` parameter is a file path (type is string, not a buffer or a file descriptor), the `writeXxx` functions will write content to a temporary file while writing, and rename to the path of `file` parameter when success. So even if an exception(such as OOM) occurs, the file will not be a file with content loss.
+
+
 ## License
 Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-url].
 
