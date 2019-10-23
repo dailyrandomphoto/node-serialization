@@ -10,7 +10,7 @@
 
 A serialization library for node. Serialize/Deserialize a huge object to/from a file.
 
-Using v8 Serialization API as default.
+Using [v8 Serialization API](https://nodejs.org/api/v8.html#v8_serialization_api) as default.
 You can provide custom serialization functions, like JSON(stringify/parse), json-stream-stringify, etc.
 
 
@@ -76,6 +76,26 @@ const {
 convert('cache.data', deserializeV8, 'cache.data.json', serializeJson)
   .catch((err) => console.error(err));
 ```
+
+## Methods
+
+### Async
+- readFile
+- writeFile
+- readJson
+- writeJson
+- convert
+
+### Sync
+- readFileSync
+- writeFileSync
+- readJsonSync
+- writeJsonSync
+- convertSync
+- serialize
+- deserialize
+- serializeJson
+- deserializeJson
 
 ## License
 Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-url].
