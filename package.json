@@ -5,9 +5,10 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "xo",
+    "lint:fix": "xo --fix",
     "test": "mocha test/index.js",
-    "test-cov": "nyc npm run test",
-    "test-loop": "while npm test --silent; do :; done"
+    "test:cov": "nyc npm run test",
+    "test:loop": "while npm test --silent; do :; done"
   },
   "dependencies": {
     "fs-extra": "^8.1.0"

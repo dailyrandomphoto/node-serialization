@@ -8,7 +8,7 @@ node_js:
 
 script:
   - npm run lint
-  - npm run test-cov
+  - npm run test:cov
 
 after_script:
   - npm install coveralls
