@@ -1,29 +1,20 @@
-const fs = require('fs-extra');
-const { tmpdir } = require('os');
+const {tmpdir} = require('os');
 const path = require('path');
+const fs = require('fs-extra');
 const prettyFormat = require('pretty-format');
-const { expect } = require('chai');
+const {expect} = require('chai');
 
 const {
-  serializeJson, deserializeJson, readJson, writeJson, readJsonSync, writeJsonSync,
+  serializeJson, deserializeJson, readJson, writeJson, readJsonSync, writeJsonSync
 } = require('../lib');
 
-const objs = [
-  3,
-  null,
-  [0, true, '2', [3.14, {}, null]],
-  { key1: 'foo', key2: 'bar', key3: { array: [null, {}] } },
-  { minusInf: -Infinity, nan: NaN, plusInf: +Infinity },
-  { date: new Date(1234567890), re: /foo/gi },
-  { map: new Map([[NaN, 4], [undefined, 'm']]), set: new Set([undefined, NaN]) },
-  { buf: Buffer.from([0, 255, 127]) },
-];
+const {objs} = require('./test-data');
 
 const file = path.join(tmpdir(), '__node-serialization-test');
 afterEach(() => {
   try {
     fs.unlinkSync(file);
-  } catch (err) {
+  } catch (_) {
     // Do nothing if file does not exist.
   }
 });
@@ -50,25 +41,22 @@ describe('Using JSON implementation', () => {
 
         expect(buf).to.be.a('string');
 
-        expect(prettyFormat(deserializeJson(buf))).to.equal(
-          prettyFormat(jsonRestore(obj)),
-        );
+        expect(prettyFormat(deserializeJson(buf)))
+          .to.equal(prettyFormat(jsonRestore(obj)));
       });
 
       it('serializes/deserializes in disk', () => {
         writeJsonSync(file, obj);
 
-        expect(prettyFormat(readJsonSync(file))).to.equal(
-          prettyFormat(jsonRestore(obj)),
-        );
+        expect(prettyFormat(readJsonSync(file)))
+          .to.equal(prettyFormat(jsonRestore(obj)));
       });
 
       it('async serializes/deserializes in disk', () => writeJson(file, obj)
         .then(() => readJson(file))
-        .then((data) => {
-          expect(prettyFormat(data)).to.equal(
-            prettyFormat(jsonRestore(obj)),
-          );
+        .then(data => {
+          expect(prettyFormat(data))
+            .to.equal(prettyFormat(jsonRestore(obj)));
         }));
     });
   });

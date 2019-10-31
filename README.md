@@ -1,7 +1,6 @@
 # node-serialization
 
 [![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
 [![LICENSE][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
@@ -110,10 +109,10 @@ Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-ur
 [dependencies-url]: https://david-dm.org/dailyrandomphoto/node-serialization
 [devDependencies-url]: https://david-dm.org/dailyrandomphoto/node-serialization?type=dev
 
-[npm-downloads-image]: https://img.shields.io/npm/dm/node-serialization.svg
-[npm-version-image]: https://img.shields.io/npm/v/node-serialization.svg
-[license-image]: https://img.shields.io/npm/l/node-serialization.svg
-[travis-image]: https://img.shields.io/travis/dailyrandomphoto/node-serialization/master
-[coveralls-image]: https://coveralls.io/repos/github/dailyrandomphoto/node-serialization/badge.svg?branch=master
-[dependencies-image]: https://david-dm.org/dailyrandomphoto/node-serialization/status.svg
-[devDependencies-image]: https://david-dm.org/dailyrandomphoto/node-serialization/dev-status.svg
+[npm-downloads-image]: https://img.shields.io/npm/dm/node-serialization
+[npm-version-image]: https://img.shields.io/npm/v/node-serialization
+[license-image]: https://img.shields.io/npm/l/node-serialization
+[travis-image]: https://img.shields.io/travis/dailyrandomphoto/node-serialization
+[coveralls-image]: https://img.shields.io/coveralls/github/dailyrandomphoto/node-serialization
+[dependencies-image]: https://img.shields.io/david/dailyrandomphoto/node-serialization
+[devDependencies-image]: https://img.shields.io/david/dev/dailyrandomphoto/node-serialization

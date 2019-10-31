@@ -1,29 +1,20 @@
-const fs = require('fs-extra');
-const { tmpdir } = require('os');
+const {tmpdir} = require('os');
 const path = require('path');
+const fs = require('fs-extra');
 const prettyFormat = require('pretty-format');
-const { expect } = require('chai');
+const {expect} = require('chai');
 
 const {
-  serialize, deserialize, readFile, writeFile, readFileSync, writeFileSync,
+  serialize, deserialize, readFile, writeFile, readFileSync, writeFileSync
 } = require('../lib');
 
-const objs = [
-  3,
-  null,
-  [0, true, '2', [3.14, {}, null]],
-  { key1: 'foo', key2: 'bar', key3: { array: [null, {}] } },
-  { minusInf: -Infinity, nan: NaN, plusInf: +Infinity },
-  { date: new Date(1234567890), re: /foo/gi },
-  { map: new Map([[NaN, 4], [undefined, 'm']]), set: new Set([undefined, NaN]) },
-  { buf: Buffer.from([0, 255, 127]) },
-];
+const {objs} = require('./test-data');
 
 const file = path.join(tmpdir(), '__node-serialization-test');
 afterEach(() => {
   try {
     fs.unlinkSync(file);
-  } catch (err) {
+  } catch (_) {
     // Do nothing if file does not exist.
   }
 });
@@ -46,25 +37,22 @@ describe('Using V8 implementation', () => {
 
         expect(buf).to.be.an.instanceof(Buffer);
 
-        expect(prettyFormat(deserialize(buf))).to.equal(
-          prettyFormat(obj),
-        );
+        expect(prettyFormat(deserialize(buf)))
+          .to.equal(prettyFormat(obj));
       });
 
       it('serializes/deserializes in disk', () => {
         writeFileSync(file, obj);
 
-        expect(prettyFormat(readFileSync(file))).to.equal(
-          prettyFormat(obj),
-        );
+        expect(prettyFormat(readFileSync(file)))
+          .to.equal(prettyFormat(obj));
       });
 
       it('async serializes/deserializes in disk', () => writeFile(file, obj)
         .then(() => readFile(file))
-        .then((data) => {
-          expect(prettyFormat(data)).to.equal(
-            prettyFormat(obj),
-          );
+        .then(data => {
+          expect(prettyFormat(data))
+            .to.equal(prettyFormat(obj));
         }));
     });
   });
