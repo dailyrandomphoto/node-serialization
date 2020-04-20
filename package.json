@@ -17,7 +17,7 @@
     "chai": "^4.2.0",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
-    "pretty-format": "^24.9.0",
+    "pretty-format": "^25.4.0",
     "xo": "^0.25.3"
   },
   "keywords": [
