@@ -20,7 +20,7 @@
     "nyc": "^15.1.0",
     "pretty-format": "^26.2.0",
     "unlink-self": "latest",
-    "xo": "^0.25.3"
+    "xo": "^0.32.1"
   },
   "keywords": [
     "serialization",
