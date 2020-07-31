@@ -100,7 +100,7 @@ If `file` parameter is a file path (type is string, not a buffer or a file descr
 
 
 ## License
-Copyright (c) 2019 dailyrandomphoto. Licensed under the [MIT license][license-url].
+Copyright (c) 2020 dailyrandomphoto. Licensed under the [MIT license][license-url].
 
 [npm-url]: https://www.npmjs.com/package/node-serialization
 [travis-url]: https://travis-ci.org/dailyrandomphoto/node-serialization
