@@ -1,14 +1,19 @@
-const {tmpdir} = require('os');
+const { tmpdir } = require('os');
 const path = require('path');
 const fs = require('fs-extra');
 const prettyFormat = require('pretty-format');
-const {expect} = require('chai');
+const { expect } = require('chai');
 
 const {
-  serialize, deserialize, readFile, writeFile, readFileSync, writeFileSync
+  serialize,
+  deserialize,
+  readFile,
+  writeFile,
+  readFileSync,
+  writeFileSync
 } = require('../lib');
 
-const {objs} = require('./test-data');
+const { objs } = require('./test-data');
 
 const file = path.join(tmpdir(), '__node-serialization-test');
 afterEach(() => {
@@ -30,30 +35,28 @@ describe('Using V8 implementation', () => {
     expect(() => deserialize(readFileSync(file))).to.throw();
   });
 
-  objs.forEach((obj, i) => {
+  objs.forEach((object, i) => {
     describe(`Object ${i}`, () => {
       it('serializes/deserializes in memory', () => {
-        const buf = serialize(obj);
+        const buf = serialize(object);
 
         expect(buf).to.be.an.instanceof(Buffer);
 
-        expect(prettyFormat(deserialize(buf)))
-          .to.equal(prettyFormat(obj));
+        expect(prettyFormat(deserialize(buf))).to.equal(prettyFormat(object));
       });
 
       it('serializes/deserializes in disk', () => {
-        writeFileSync(file, obj);
+        writeFileSync(file, object);
 
-        expect(prettyFormat(readFileSync(file)))
-          .to.equal(prettyFormat(obj));
+        expect(prettyFormat(readFileSync(file))).to.equal(prettyFormat(object));
       });
 
-      it('async serializes/deserializes in disk', () => writeFile(file, obj)
-        .then(() => readFile(file))
-        .then(data => {
-          expect(prettyFormat(data))
-            .to.equal(prettyFormat(obj));
-        }));
+      it('async serializes/deserializes in disk', () =>
+        writeFile(file, object)
+          .then(() => readFile(file))
+          .then((data) => {
+            expect(prettyFormat(data)).to.equal(prettyFormat(object));
+          }));
     });
   });
 });

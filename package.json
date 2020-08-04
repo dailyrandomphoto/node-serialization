@@ -4,8 +4,8 @@
   "description": "A serialization library for node. Serialize/Deserialize a huge object to/from a file.",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "xo",
-    "lint:fix": "xo --fix",
+    "lint": "prettier --write . && xo",
+    "lint:fix": "prettier --write . && xo --fix",
     "test": "mocha test/index.js",
     "test:cov": "nyc npm run test",
     "test:loop": "while npm test --silent; do :; done",
@@ -18,6 +18,7 @@
     "chai": "^4.2.0",
     "mocha": "^8.1.0",
     "nyc": "^15.1.0",
+    "prettier": "latest",
     "pretty-format": "^26.2.0",
     "unlink-self": "latest",
     "xo": "^0.32.1"
@@ -54,8 +55,12 @@
   "homepage": "https://github.com/dailyrandomphoto/node-serialization#readme",
   "xo": {
     "space": 2,
+    "prettier": true,
     "rules": {
-      "promise/prefer-await-to-then": 0
+      "promise/prefer-await-to-then": 0,
+      "capitalized-comments": 0,
+      "unicorn/prefer-number-properties": 0,
+      "unicorn/prefer-optional-catch-binding": 0
     },
     "overrides": [
       {
