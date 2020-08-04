@@ -1,18 +1,17 @@
-const {tmpdir} = require('os');
+const { tmpdir } = require('os');
 const path = require('path');
 const fs = require('fs-extra');
 const prettyFormat = require('pretty-format');
-const {expect} = require('chai');
+const { expect } = require('chai');
 
-const {
-  serialization, serializeJson, deserializeJson
-} = require('../lib');
+const { serialization, serializeJson, deserializeJson } = require('../lib');
 
-const {
-  readFile, writeFile, readFileSync, writeFileSync
-} = serialization(serializeJson, deserializeJson);
+const { readFile, writeFile, readFileSync, writeFileSync } = serialization(
+  serializeJson,
+  deserializeJson
+);
 
-const {objs} = require('./test-data');
+const { objs } = require('./test-data');
 
 const file = path.join(tmpdir(), '__node-serialization-test');
 afterEach(() => {
@@ -23,8 +22,8 @@ afterEach(() => {
   }
 });
 
-function jsonRestore(obj) {
-  return JSON.parse(JSON.stringify(obj));
+function jsonRestore(object) {
+  return JSON.parse(JSON.stringify(object));
 }
 
 describe('Using Custom implementation', () => {
@@ -38,30 +37,34 @@ describe('Using Custom implementation', () => {
     expect(() => deserializeJson(readFileSync(file))).to.throw();
   });
 
-  objs.forEach((obj, i) => {
+  objs.forEach((object, i) => {
     describe(`Object ${i}`, () => {
       it('serializes/deserializes in memory', () => {
-        const buf = serializeJson(obj);
+        const buf = serializeJson(object);
 
         expect(buf).to.be.a('string');
 
-        expect(prettyFormat(deserializeJson(buf)))
-          .to.equal(prettyFormat(jsonRestore(obj)));
+        expect(prettyFormat(deserializeJson(buf))).to.equal(
+          prettyFormat(jsonRestore(object))
+        );
       });
 
       it('serializes/deserializes in disk', () => {
-        writeFileSync(file, obj);
+        writeFileSync(file, object);
 
-        expect(prettyFormat(readFileSync(file)))
-          .to.equal(prettyFormat(jsonRestore(obj)));
+        expect(prettyFormat(readFileSync(file))).to.equal(
+          prettyFormat(jsonRestore(object))
+        );
       });
 
-      it('async serializes/deserializes in disk', () => writeFile(file, obj)
-        .then(() => readFile(file))
-        .then(data => {
-          expect(prettyFormat(data))
-            .to.equal(prettyFormat(jsonRestore(obj)));
-        }));
+      it('async serializes/deserializes in disk', () =>
+        writeFile(file, object)
+          .then(() => readFile(file))
+          .then((data) => {
+            expect(prettyFormat(data)).to.equal(
+              prettyFormat(jsonRestore(object))
+            );
+          }));
     });
   });
 });
