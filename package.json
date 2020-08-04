@@ -1,6 +1,6 @@
 {
   "name": "node-serialization",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A serialization library for node. Serialize/Deserialize a huge object to/from a file.",
   "main": "lib/index.js",
   "scripts": {
