@@ -21,7 +21,7 @@
     "prettier": "latest",
     "pretty-format": "^26.2.0",
     "unlink-self": "latest",
-    "xo": "^0.35.0"
+    "xo": "^0.36.1"
   },
   "keywords": [
     "serialization",
