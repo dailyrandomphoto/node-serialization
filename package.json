@@ -19,7 +19,7 @@
     "mocha": "^8.1.0",
     "nyc": "^15.1.0",
     "prettier": "latest",
-    "pretty-format": "^26.2.0",
+    "pretty-format": "^27.0.1",
     "unlink-self": "latest",
     "xo": "^0.35.0"
   },
